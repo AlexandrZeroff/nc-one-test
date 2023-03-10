@@ -1,6 +1,7 @@
 import './App.scss';
 import AppHeader from './components/appHeader.jsx/AppHeader';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import AppScreen from './components/appScreen/AppScreen';
 
 
 const theme = createTheme({
@@ -61,6 +62,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <AppHeader />
+      <AppScreen />
     </ThemeProvider>
 
   );
