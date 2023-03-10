@@ -1,8 +1,9 @@
 import './App.scss';
-import AppHeader from './components/appHeader.jsx/AppHeader';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AppScreen from './components/appScreen/AppScreen';
-
+import GoodsList from './components/goodsList/GoodsList'
+import ProductPage from './components/productPage/ProductPage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './Home';
 
 const theme = createTheme({
   palette: {
@@ -61,8 +62,15 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <AppHeader />
-      <AppScreen />
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home />}>
+            <Route index element={<GoodsList />} />
+            <Route path='/:id' element={<ProductPage />} />
+          </Route>
+        </Routes>
+      </Router>
+
     </ThemeProvider>
 
   );
