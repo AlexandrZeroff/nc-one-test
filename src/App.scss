@@ -33,14 +33,22 @@ $th-light: #fbfbfb;
   display: flex;
 }
 
-.grid {
-  display: grid;
-}
-
 .flex-row {
   flex-direction: row;
 }
 
 .flex-col {
   flex-direction: column;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.gap-x-2{
+  column-gap: 2rem;
 }
