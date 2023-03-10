@@ -13,6 +13,7 @@ const AppScreen = () => {
         id: "screen",
         boxSizing: "border-box",
         height: "calc(100vh - 6rem - 1px)",
+        backgroundColor: 'primary.contrastText'
       }}
     >
       <Grid container height="100%" columnSpacing={4}>
