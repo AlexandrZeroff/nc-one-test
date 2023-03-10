@@ -11,7 +11,6 @@ const AppScreen = () => {
       sx={{
         flexGrow: 1,
         id: "screen",
-        paddingTop: "3rem",
         boxSizing: "border-box",
         height: "calc(100vh - 6rem - 1px)",
       }}
