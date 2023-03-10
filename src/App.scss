@@ -14,3 +14,27 @@ h4 {
   font-size: 1rem;
 }
 
+$th-primary: #ffcc26;
+$th-secondary: #414141;
+$th-light: #fbfbfb;
+
+.p-default {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
