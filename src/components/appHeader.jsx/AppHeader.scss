@@ -1,0 +1,12 @@
+@import "../../App.scss";
+
+.header-wrapper {
+  h2 {
+    color: $th-secondary;
+    margin-left: auto;
+  }
+  border-bottom: 1px solid black;
+  background-color: $th-primary;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
