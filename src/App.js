@@ -26,10 +26,9 @@ const theme = createTheme({
     },
     h2: {
       fontFamily: 'Anek Telugu',
-      fontWeight: 400,
+      fontWeight: 500,
       fontSize: 32,
-      lineHeight: 48,
-      letterSpacing: '0.05rem',
+      lineHeight: '48px',
     },
     h3: {
       fontFamily: 'Poppins',

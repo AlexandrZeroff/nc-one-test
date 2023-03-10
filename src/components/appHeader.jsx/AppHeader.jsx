@@ -15,6 +15,9 @@ const AppHeader = () => {
         height: "6rem",
         backgroundColor: "primary.main",
         display: "flex",
+        borderBottom: "1px solid black",
+        alignItems: 'center',
+        textTransform: 'uppercase'
       }}
     >
       <Typography
