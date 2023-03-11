@@ -28,7 +28,7 @@ export const theme = createTheme({
             lineHeight: '34px',
         },
         h3: {
-            fontFamily: 'Poppins',
+            fontFamily: 'Anek Telugu',
             fontWeight: 500,
             fontSize: 20,
             lineHeight: '30px',
@@ -73,5 +73,20 @@ export const theme = createTheme({
                 }
             }
         },
+        MuiCard: {
+            styleOverrides: {
+                root: {
+                    boxShadow: 'none'
+                }
+            },
+        },
+        MuiIconButton: {
+            styleOverrides: {
+                root: {
+                    borderRadius: 4,
+                    padding: 3
+                }
+            },
+        }
     },
 })

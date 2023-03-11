@@ -5,20 +5,32 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useGlobalState } from "../../state";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 
-const ProductCard = ({ id, image, title, price }) => {
+const ProductCard = ({ id, image, title, price, dashed, direction }) => {
   const [favorites, updateFavorites] = useGlobalState("favoriteProducts");
+
+  const flexDirection = direction === "row" ? "row" : "column";
 
   const api_string = process.env.REACT_APP_BASE_API_STRING;
   const image_url = api_string + image;
 
-  const handleAddFavorites = (e) => {
+  const isFavorite = favorites.some((product) => {
+    if (product.id === id) {
+      return true;
+    }
+    return false;
+  });
+
+  const btnColor = isFavorite ? "secondary.main" : "white";
+
+  const addToFavorites = (e) => {
     e.preventDefault();
-    updateFavorites("favoriteProducts", [
+    updateFavorites([
+      ...favorites,
       {
         id: id,
         name: title,
@@ -28,22 +40,25 @@ const ProductCard = ({ id, image, title, price }) => {
     ]);
   };
 
+  const removeFromFavorites = (e) => {
+    e.preventDefault();
+    updateFavorites(favorites.filter((product) => product.id !== id));
+  };
+
   return (
     <Link to={"/" + id} style={{ textDecoration: "none" }}>
       <Card
+        className={dashed ? "DashedCard" : ""}
         sx={{
           width: "100%",
           height: "100%",
           boxSizing: "border-box",
-          borderWidth: "2px",
-          borderStyle: "dashed",
-          borderColor: "secondary.main",
           borderRadius: "30px",
-          px: 2,
+          px: 3,
           py: 1,
           marginBottom: 4,
           display: "flex",
-          flexWrap: "wrap",
+          flexDirection: { flexDirection },
         }}
       >
         <CardMedia component="img" alt={title} image={image_url} sx={{}} />
@@ -70,9 +85,14 @@ const ProductCard = ({ id, image, title, price }) => {
             </Typography>
             <IconButton
               aria-label="Add to favorites"
-              onClick={handleAddFavorites}
+              onClick={isFavorite ? removeFromFavorites : addToFavorites}
+              sx={{
+                borderRadius: 1,
+                color: 'white',
+                backgroundColor: 'primary.main'
+              }}
             >
-              <FavoriteBorderIcon />
+              <FavoriteIcon />
             </IconButton>
           </CardActions>
         </CardContent>

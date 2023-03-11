@@ -26,11 +26,13 @@ const GoodsList = () => {
             xs={3}
             sx={{
               px: 1,
-              paddingBottom: 4
+              paddingBottom: 4,
             }}
+            key={index}
           >
             <ProductCard
-              key={index}
+              dashed={true}
+              direction="column"
               id={product.id}
               title={product.name}
               image={product.src}

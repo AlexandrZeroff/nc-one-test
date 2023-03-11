@@ -4,6 +4,7 @@ import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import ProductCard from "../productCard/ProductCard";
 import { useGlobalState } from "../../state";
+import Typography from "@mui/material/Typography";
 
 const Favorites = () => {
   const [favorites, updateFavorites] = useGlobalState("favoriteProducts");
@@ -40,20 +41,34 @@ const Favorites = () => {
           borderStyle: "dashed",
           borderColor: "secondary.main",
           borderRadius: "30px",
-          p: 4,
+          px: 1,
+          py: 3,
         }}
       >
+        <Typography
+          component="h3"
+          variant="h3"
+          sx={{
+            textTransform: "uppercase",
+            ml: 2
+          }}
+        >
+          Favorites
+        </Typography>
         <AutoSizer>
           {({ height, width }) => (
             <List
               height={height}
-              itemSize={80}
+              itemSize={100}
               itemCount={favorites.length}
               width={width}
+              style={{ marginTop: 2 }}
             >
               {({ index, style }) => (
                 <ProductCard
                   key={index}
+                  dashed={false}
+                  direction="row"
                   id={favorites[index].id}
                   title={favorites[index].name}
                   image={favorites[index].src}
