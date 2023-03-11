@@ -3,17 +3,32 @@ import Box from "@mui/material/Box";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import ProductCard from "../productCard/ProductCard";
+import { useGlobalState } from "../../state";
 
 const Favorites = () => {
-  const Row = ({ index, style }) => <div style={style}>Row {index + 1}</div>;
+  const [favorites, updateFavorites] = useGlobalState("favoriteProducts");
+
+  const getFavoriteProducts = () => {};
+  /* {
+      currentFavorites.map((product, index) => (
+        <ProductCard
+          key={index}
+          id={product.id}
+          title={product.name}
+          image={product.src}
+          price={product.price}
+        />
+      ))} */
 
   return (
     <Box
       sx={{
         width: "100%",
         height: "100%",
-        p: 4,
         boxSizing: "border-box",
+        py: 4,
+        paddingLeft: 4,
+        paddingRight: 6,
       }}
     >
       <Box
@@ -25,13 +40,26 @@ const Favorites = () => {
           borderStyle: "dashed",
           borderColor: "secondary.main",
           borderRadius: "30px",
-          p: 2,
+          p: 4,
         }}
       >
         <AutoSizer>
           {({ height, width }) => (
-            <List height={height} itemSize={35} itemCount={10} width={width}>
-              {Row}
+            <List
+              height={height}
+              itemSize={80}
+              itemCount={favorites.length}
+              width={width}
+            >
+              {({ index, style }) => (
+                <ProductCard
+                  key={index}
+                  id={favorites[index].id}
+                  title={favorites[index].name}
+                  image={favorites[index].src}
+                  price={favorites[index].price}
+                />
+              )}
             </List>
           )}
         </AutoSizer>

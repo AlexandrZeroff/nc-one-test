@@ -13,11 +13,14 @@ const AppScreen = () => {
         id: "screen",
         boxSizing: "border-box",
         height: "calc(100vh - 6rem - 1px)",
-        backgroundColor: 'primary.contrastText'
+        backgroundColor: "primary.contrastText",
       }}
     >
       <Grid container height="100%" columnSpacing={4}>
-        <Grid item xs={4}>
+        <Grid
+          item
+          xs={4}
+        >
           <Favorites />
         </Grid>
         <Grid item xs={8}>

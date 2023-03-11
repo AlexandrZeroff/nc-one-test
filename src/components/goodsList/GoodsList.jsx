@@ -5,23 +5,40 @@ import Grid from "@mui/material/Grid";
 import ProductCard from "../productCard/ProductCard";
 
 const GoodsList = () => {
-  const { products, error, loading } = useProducts();
-  console.log(products);
+  const { data, error, loading } = useProducts();
+  console.log(data);
 
   return (
-    <Box
+    <Grid
+      container
       sx={{
-        width: "100%",
-        height: "100%",
-        paddingTop: 4,
-        paddingRight: 4,
+        overflowY: "scroll",
+        maxHeight: "calc(100vh - 8rem - 1px)",
+        marginTop: 4,
+        marginRight: 4,
         boxSizing: "border-box",
       }}
     >
-      <Grid container columnSpacing={2} rowSpacing={4}>
-        {/*products !== null && products.map((product, index) => <ProductCard />)*/}
-      </Grid>
-    </Box>
+      {data !== null &&
+        data.map((product, index) => (
+          <Grid
+            item
+            xs={3}
+            sx={{
+              px: 1,
+              paddingBottom: 4
+            }}
+          >
+            <ProductCard
+              key={index}
+              id={product.id}
+              title={product.name}
+              image={product.src}
+              price={product.price}
+            />
+          </Grid>
+        ))}
+    </Grid>
   );
 };
 

@@ -24,20 +24,26 @@ export const theme = createTheme({
         h2: {
             fontFamily: 'Anek Telugu',
             fontWeight: 500,
-            fontSize: 32,
-            lineHeight: '48px',
+            fontSize: 24,
+            lineHeight: '34px',
         },
         h3: {
             fontFamily: 'Poppins',
             fontWeight: 500,
-            fontSize: 24,
-            lineHeight: 36,
+            fontSize: 20,
+            lineHeight: '30px',
+        },
+        h4: {
+            fontFamily: 'Roboto',
+            fontWeight: 400,
+            fontSize: 16,
+            lineHeight: '24px',
         },
         p: {
             fontFamily: 'Poppins',
             fontWeight: 400,
-            fontSize: 20,
-            lineHeight: 30,
+            fontSize: 14,
+            lineHeight: '20px',
         }
     },
     components: {
@@ -56,6 +62,16 @@ export const theme = createTheme({
                     body2: 'span',
                 },
             },
+        },
+        MuiCardContent: {
+            styleOverrides: {
+                root: {
+                    padding: '0px',
+                    ':last-child': {
+                        paddingBottom: '0px'
+                    }
+                }
+            }
         },
     },
 })
