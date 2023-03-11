@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -25,7 +25,7 @@ const ProductCard = ({ id, image, title, price, dashed, direction }) => {
     return false;
   });
 
-  const btnColor = isFavorite ? "secondary.main" : "white";
+  const [favorite, setFavorite] = useState(isFavorite);
 
   const addToFavorites = (e) => {
     e.preventDefault();
@@ -38,11 +38,13 @@ const ProductCard = ({ id, image, title, price, dashed, direction }) => {
         price: price,
       },
     ]);
+    setFavorite(!favorite);
   };
 
   const removeFromFavorites = (e) => {
     e.preventDefault();
     updateFavorites(favorites.filter((product) => product.id !== id));
+    setFavorite(!favorite);
   };
 
   return (
@@ -88,8 +90,8 @@ const ProductCard = ({ id, image, title, price, dashed, direction }) => {
               onClick={isFavorite ? removeFromFavorites : addToFavorites}
               sx={{
                 borderRadius: 1,
-                color: 'white',
-                backgroundColor: 'primary.main'
+                color: favorite ? "secondary.main" : "white",
+                backgroundColor: "primary.main",
               }}
             >
               <FavoriteIcon />

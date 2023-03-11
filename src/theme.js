@@ -23,13 +23,13 @@ export const theme = createTheme({
         },
         h2: {
             fontFamily: 'Anek Telugu',
-            fontWeight: 500,
+            fontWeight: 600,
             fontSize: 24,
             lineHeight: '34px',
         },
         h3: {
             fontFamily: 'Anek Telugu',
-            fontWeight: 500,
+            fontWeight: 600,
             fontSize: 20,
             lineHeight: '30px',
         },

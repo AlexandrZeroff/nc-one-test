@@ -4,8 +4,12 @@ import Favorites from "../favorites/Favorites";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Outlet } from "react-router-dom";
+import { useGlobalState } from "../../state";
 
 const AppScreen = () => {
+  
+  const [favorites, updateFavorites] = useGlobalState("favoriteProducts");
+
   return (
     <Box
       sx={{
@@ -17,10 +21,7 @@ const AppScreen = () => {
       }}
     >
       <Grid container height="100%" columnSpacing={4}>
-        <Grid
-          item
-          xs={4}
-        >
+        <Grid item xs={4}>
           <Favorites />
         </Grid>
         <Grid item xs={8}>
