@@ -29,10 +29,16 @@ export const theme = createTheme({
         },
         h3: {
             fontFamily: 'Poppins',
+            fontWeight: 500,
+            fontSize: 24,
+            lineHeight: 36,
+        },
+        p: {
+            fontFamily: 'Poppins',
             fontWeight: 400,
             fontSize: 20,
             lineHeight: 30,
-        },
+        }
     },
     components: {
         MuiTypography: {

@@ -1,23 +1,26 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import useProducts from "../../hooks/useProducts";
+import Grid from "@mui/material/Grid";
+import ProductCard from "../productCard/ProductCard";
 
 const GoodsList = () => {
-  const products = useProducts();
-  console.log(products)
+  const { products, error, loading } = useProducts();
+  console.log(products);
 
   return (
     <Box
       sx={{
         width: "100%",
         height: "100%",
-        p: 4,
+        paddingTop: 4,
+        paddingRight: 4,
         boxSizing: "border-box",
       }}
     >
-      {/* {products.map((product, index) => (
-        <div>{product}</div>
-      ))} */}
+      <Grid container columnSpacing={2} rowSpacing={4}>
+        {/*products !== null && products.map((product, index) => <ProductCard />)*/}
+      </Grid>
     </Box>
   );
 };
