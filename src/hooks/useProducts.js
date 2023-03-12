@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const useProducts = () => {
+const useProducts = (id) => {
     const api_string = process.env.REACT_APP_BASE_API_STRING
     const req_string = api_string + "/image"
+    const req_params = id ? {
+        id: id
+    } : {}
 
     const [data, setData] = useState(null)
     const [error, setError] = useState(null)
@@ -14,7 +17,7 @@ const useProducts = () => {
             async function () {
                 try {
                     setLoading(true)
-                    const response = await axios.get(req_string)
+                    const response = await axios.get(req_string, { params: req_params })
                     setData(response.data)
                 } catch (err) {
                     setError(err)
@@ -23,7 +26,7 @@ const useProducts = () => {
                 }
             }
         )()
-    }, [setData])
+    }, [req_string])
 
     return { data, error, loading }
 }

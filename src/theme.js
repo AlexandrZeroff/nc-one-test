@@ -16,10 +16,10 @@ export const theme = createTheme({
     typography: {
         fontFamily: 'Poppins',
         h1: {
-            fontFamily: 'Anek Telugu',
+            fontFamily: 'Roboto',
             fontWeight: 400,
-            fontSize: 64,
-            lineHeight: 96,
+            fontSize: 48,
+            lineHeight: '62px',
         },
         h2: {
             fontFamily: 'Anek Telugu',
@@ -87,6 +87,13 @@ export const theme = createTheme({
                     padding: 3
                 }
             },
+        },
+        MuiListItem: {
+            styleOverrides: {
+                root: {
+                    padding: 0
+                }
+            }
         }
     },
 })

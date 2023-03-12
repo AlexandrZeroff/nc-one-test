@@ -1,13 +1,13 @@
-import React from "react";
-import Box from "@mui/material/Box";
+import React, { useState } from "react";
 import useProducts from "../../hooks/useProducts";
 import Grid from "@mui/material/Grid";
 import ProductCard from "../productCard/ProductCard";
+import { useGlobalState } from "../../state";
 
 const GoodsList = () => {
   const { data, error, loading } = useProducts();
-  console.log(data);
-
+  const [favorites, updateFavorites] = useGlobalState("favoriteProducts");
+  
   return (
     <Grid
       container
@@ -33,6 +33,7 @@ const GoodsList = () => {
             <ProductCard
               dashed={true}
               direction="column"
+              contentSize="small"
               id={product.id}
               title={product.name}
               image={product.src}
