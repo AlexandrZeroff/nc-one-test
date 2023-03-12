@@ -22,15 +22,15 @@ const ProductCard = ({
   return (
     <Link to={"/" + id} state={{ id: id }} style={{ textDecoration: "none" }}>
       <Stack
-        className={dashed ? "DashedCard" : ""}
+        className={dashed ? "DashedThin" : ""}
         direction={flexDirection}
         sx={{
+          height: direction === 'row' ? 'min-content' : '100%',
           width: "100%",
-          height: "100%",
           boxSizing: "border-box",
           borderRadius: "30px",
           px: 3,
-          py: 1,
+          py: 2,
           marginBottom: 1,
         }}
       >

@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import useProducts from "../../hooks/useProducts";
 import Grid from "@mui/material/Grid";
 import ProductCard from "../productCard/ProductCard";
-import { useGlobalState } from "../../state";
+import { useStoreState } from "../../state";
 
 const GoodsList = () => {
   const { data, error, loading } = useProducts();
-  const [favorites, updateFavorites] = useGlobalState("favoriteProducts");
-  
+  const favorites = useStoreState('favorites')
+
   return (
     <Grid
       container
       sx={{
         overflowY: "scroll",
-        maxHeight: "calc(100vh - 8rem - 1px)",
-        marginTop: 4,
+        maxHeight: "calc(100vh - 6rem - 1px)",
+        paddingTop: 4,
         marginRight: 4,
         boxSizing: "border-box",
       }}

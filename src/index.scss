@@ -24,8 +24,12 @@ $th-primary: #ffcc26;
 $th-secondary: #414141;
 $th-primary-contrast: #fbfbfb;
 
-.DashedCard {
-  border: 2px dashed $th-secondary;
+.DashedThin {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='30' ry='30' stroke='%23333' stroke-width='2' stroke-dasharray='6%2c 11' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+}
+
+.DashedThick {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='30' ry='30' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 11' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
 }
 
 .MuiIconButton-root {
@@ -36,3 +40,7 @@ $th-primary-contrast: #fbfbfb;
   }
 }
 
+.Fullsize {
+  width: 100%;
+  height: 100%;
+}

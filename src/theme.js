@@ -94,6 +94,37 @@ export const theme = createTheme({
                     padding: 0
                 }
             }
+        },
+        MuiGrid: {
+            styleOverrides: {
+                root: {
+                    scrollbarColor: "primary",
+                    "&::-webkit-scrollbar, & *::-webkit-scrollbar": {
+                        backgroundColor: "#c3c3c3",
+                        borderRadius: 6
+                    },
+                    "&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb": {
+                        borderRadius: 6,
+                        backgroundColor: "#ffcc26",
+                        minHeight: 12,
+                    },
+                    "&::-webkit-scrollbar-thumb:focus, & *::-webkit-scrollbar-thumb:focus":
+                    {
+                        backgroundColor: "#959595",
+                    },
+                    "&::-webkit-scrollbar-thumb:active, & *::-webkit-scrollbar-thumb:active":
+                    {
+                        backgroundColor: "#959595",
+                    },
+                    "&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover":
+                    {
+                        backgroundColor: "#959595",
+                    },
+                    "&::-webkit-scrollbar-corner, & *::-webkit-scrollbar-corner": {
+                        backgroundColor: "#2b2b2b",
+                    },
+                }
+            }
         }
-    },
+    }
 })

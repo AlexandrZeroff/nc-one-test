@@ -3,11 +3,30 @@ import CardContent from "@mui/material/CardContent";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Typography from "@mui/material/Typography";
-import { useGlobalState } from "../../state";
+import {
+  useStoreState,
+  addToFavorites,
+  removeFromFavorites,
+} from "../../state";
 import { Stack } from "@mui/material";
 
 const ProductCardContent = ({ id, image, title, price, size, direction }) => {
-  const [favorites, updateFavorites] = useGlobalState("favoriteProducts");
+  const handleAddProduct = (e) => {
+    addToFavorites(e, {
+      id: id,
+      name: title,
+      src: image,
+      price: price,
+    });
+    setFavorite(!favorite);
+  };
+
+  const handleRemoveProduct = (e) => {
+    removeFromFavorites(e, id);
+    setFavorite(!favorite);
+  };
+
+  const favorites = useStoreState("favorites");
 
   const isFavorite = favorites.some((product) => {
     if (product.id === id) {
@@ -46,26 +65,6 @@ const ProductCardContent = ({ id, image, title, price, size, direction }) => {
 
   const [favorite, setFavorite] = useState(isFavorite);
 
-  const addToFavorites = (e) => {
-    e.preventDefault();
-    updateFavorites([
-      ...favorites,
-      {
-        id: id,
-        name: title,
-        src: image,
-        price: price,
-      },
-    ]);
-    setFavorite(!favorite);
-  };
-
-  const removeFromFavorites = (e) => {
-    e.preventDefault();
-    updateFavorites(favorites.filter((product) => product.id !== id));
-    setFavorite(!favorite);
-  };
-
   return (
     <CardContent
       sx={{
@@ -102,7 +101,7 @@ const ProductCardContent = ({ id, image, title, price, size, direction }) => {
         </Typography>
         <IconButton
           aria-label="Add to favorites"
-          onClick={isFavorite ? removeFromFavorites : addToFavorites}
+          onClick={isFavorite ? handleRemoveProduct : handleAddProduct}
           size={styles.btnSize}
           sx={{
             borderRadius: 1,

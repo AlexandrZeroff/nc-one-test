@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import ProductCardContent from "../productCard/ProductCardContent";
@@ -6,10 +6,13 @@ import { useLocation } from "react-router-dom";
 import useProducts from "../../hooks/useProducts";
 import CardMedia from "@mui/material/CardMedia";
 import Stack from "@mui/material/Stack";
+import ReactImageMagnify from "react-image-magnify";
+import ZoomInIcon from "@mui/icons-material/ZoomIn";
+import { IconButton } from "@mui/material";
 
 const ProductPage = () => {
   const location = useLocation();
-  const { id } = location.state;
+  const [id, setId] = useState(location.state.id);
   const { data, error, loading } = useProducts(id);
   const api_string = process.env.REACT_APP_BASE_API_STRING;
   return (
@@ -17,7 +20,7 @@ const ProductPage = () => {
       sx={{
         flexGrow: 1,
         height: "100%",
-        maxHeight: "calc(100vh - 8rem - 1px)",
+        maxHeight: "calc(100vh - 8rem)",
         mx: 4,
         boxSizing: "border-box",
       }}
@@ -39,11 +42,44 @@ const ProductPage = () => {
                 height: "100%",
               }}
             >
-              <CardMedia
-                component="img"
-                alt={data.name}
-                image={api_string + data.src}
-                sx={{}}
+              <ReactImageMagnify
+                {...{
+                  smallImage: {
+                    alt: data.name,
+                    isFluidWidth: true,
+                    src: api_string + data.src,
+                  },
+                  largeImage: {
+                    src: api_string + data.src,
+                    width: 600,
+                    height: 600,
+                  },
+                  enlargedImageContainerDimensions: {
+                    width: "140%",
+                    height: "120%",
+                  },
+                  enlargedImageContainerStyle: {
+                    marginTop: "-10%",
+                  },
+                  style: {
+                    display: "flex",
+                    flexDirection: "column",
+                  },
+                  isHintEnabled: true,
+                  shouldHideHintAfterFirstActivation: false,
+                  hintComponent: () => (
+                    <IconButton
+                      size="large"
+                      sx={{
+                        marginTop: 4,
+                        color: "secondary.main",
+                        mx: "auto",
+                      }}
+                    >
+                      <ZoomInIcon fontSize="inherit" />
+                    </IconButton>
+                  ),
+                }}
               />
             </Stack>
           </Grid>

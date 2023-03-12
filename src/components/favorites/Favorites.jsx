@@ -1,15 +1,14 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { FixedSizeList as List } from "react-window";
-import ListItem from "@mui/material/ListItem";
 import AutoSizer from "react-virtualized-auto-sizer";
 import ProductCard from "../productCard/ProductCard";
-import { useGlobalState } from "../../state";
+import { useStoreState } from "../../state";
 import Typography from "@mui/material/Typography";
 import { Stack } from "@mui/material";
 
 const Favorites = () => {
-  const [favorites] = useGlobalState("favoriteProducts");
+  const favorites = useStoreState('favorites')
 
   const getProduct = ({ index }) => (
     <ProductCard
@@ -27,32 +26,28 @@ const Favorites = () => {
   return (
     <Box
       component="div"
+      className="Fullsize"
       sx={{
-        width: "100%",
-        height: "100%",
         boxSizing: "border-box",
         py: 4,
-        paddingLeft: 4,
-        paddingRight: 8,
+        px: 8,
       }}
     >
       <Stack
         direction="column"
         sx={{
-          width: "100%",
-          height: "100%",
           borderRadius: "30px",
-          boxSizing: 'border-box',
-          py: 4
+          boxSizing: "border-box",
+          py: 4,
         }}
-        className="DashedCard"
+        className="DashedThick Fullsize"
       >
         <Typography
           component="h3"
           variant="h3"
           sx={{
             textTransform: "uppercase",
-            ml: 2,
+            ml: 4,
           }}
         >
           Favorites
