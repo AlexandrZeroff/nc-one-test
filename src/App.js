@@ -1,4 +1,3 @@
-import './App.scss';
 import { ThemeProvider } from '@mui/material/styles';
 import GoodsList from './components/goodsList/GoodsList'
 import ProductPage from './components/productPage/ProductPage';
