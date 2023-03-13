@@ -11,7 +11,6 @@ import Error from "../utils/Error";
 import Loading from "../utils/Loading";
 import { useLocation } from "react-router-dom";
 
-
 const ProductPage = () => {
   const location = useLocation();
   const { id } = location.state;

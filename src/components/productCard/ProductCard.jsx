@@ -28,6 +28,7 @@ const ProductCard = ({
       <Stack
         className={dashed ? "DashedThin" : ""}
         direction={flexDirection}
+        alignItems={direction === "row" ? "center" : ""}
         sx={{
           height: direction === "row" ? "min-content" : "100%",
           width: "100%",
@@ -36,6 +37,11 @@ const ProductCard = ({
           px: 3,
           py: 2,
           marginBottom: 1,
+          backgroundColor: "common.white",
+          transition: direction === "row" ? "none" : "all .1s ease-in-out",
+          "&:hover": {
+            transform: direction === "row" ? "none" : "scale(1.02)",
+          },
         }}
       >
         <CardMedia
