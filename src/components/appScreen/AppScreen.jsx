@@ -3,6 +3,7 @@ import Favorites from "../favorites/Favorites";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Outlet } from "react-router-dom";
+import { useStoreState } from "../../state";
 
 const AppScreen = () => {
 

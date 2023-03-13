@@ -63,7 +63,7 @@ const Favorites = () => {
               <List
                 height={height}
                 itemCount={favorites.length}
-                itemSize={150}
+                itemSize={50}
                 width={width}
               >
                 {getProduct}

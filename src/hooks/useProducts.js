@@ -20,7 +20,7 @@ const useProducts = (id) => {
                     const response = await axios.get(req_string, { params: req_params })
                     setData(response.data)
                 } catch (err) {
-                    setError(err)
+                    setError(err.message)
                 } finally {
                     setLoading(false)
                 }

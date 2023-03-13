@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import { Link } from "react-router-dom";
 import ProductCardContent from "./ProductCardContent";
@@ -25,7 +24,7 @@ const ProductCard = ({
         className={dashed ? "DashedThin" : ""}
         direction={flexDirection}
         sx={{
-          height: direction === 'row' ? 'min-content' : '100%',
+          height: direction === "row" ? "min-content" : "100%",
           width: "100%",
           boxSizing: "border-box",
           borderRadius: "30px",
