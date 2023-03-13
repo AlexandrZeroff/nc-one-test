@@ -1,4 +1,3 @@
-import React from 'react';
 import { createStore } from 'react-hooks-global-state';
 
 const reducer = (state, action) => {

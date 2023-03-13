@@ -1,5 +1,3 @@
-import React from "react";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useLocation } from "react-router-dom";
 import Stack from "@mui/material/Stack";
