@@ -1,4 +1,3 @@
-import "./AppScreen.scss";
 import React from "react";
 import Favorites from "../favorites/Favorites";
 import Box from "@mui/material/Box";
@@ -13,7 +12,7 @@ const AppScreen = () => {
         id: "screen",
         boxSizing: "border-box",
         height: "calc(100vh - 6rem - 1px)",
-        backgroundColor: 'primary.contrastText'
+        backgroundColor: "primary.contrastText",
       }}
     >
       <Grid container height="100%" columnSpacing={4}>

@@ -1,24 +1,53 @@
 import React from "react";
-import Box from "@mui/material/Box";
 import useProducts from "../../hooks/useProducts";
+import Grid from "@mui/material/Grid";
+import ProductCard from "../productCard/ProductCard";
+import Error from "../utils/Error";
+import Loading from "../utils/Loading";
+import { useStoreState } from "../../state";
 
 const GoodsList = () => {
-  const products = useProducts();
-  console.log(products)
+  const favorites = useStoreState("favorites");
+  const { data, error, loading } = useProducts();
 
   return (
-    <Box
+    <Grid
+      container
       sx={{
-        width: "100%",
         height: "100%",
-        p: 4,
+        overflowY: "scroll",
+        maxHeight: "calc(100vh - 6rem - 1px)",
+        paddingTop: 4,
+        paddingRight: 4,
         boxSizing: "border-box",
       }}
     >
-      {/* {products.map((product, index) => (
-        <div>{product}</div>
-      ))} */}
-    </Box>
+      {loading && <Loading />}
+      {error && <Error error={error} />}
+      {data !== null &&
+        data.map((product, index) => (
+          <Grid
+            item
+            xs={3}
+            sx={{
+              px: 1,
+              paddingBottom: 4,
+            }}
+            key={index}
+          >
+            <ProductCard
+              key={index}
+              dashed={true}
+              direction="column"
+              contentSize="small"
+              id={product.id}
+              title={product.name}
+              image={product.src}
+              price={product.price}
+            />
+          </Grid>
+        ))}
+    </Grid>
   );
 };
 

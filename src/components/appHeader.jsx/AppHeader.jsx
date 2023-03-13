@@ -1,36 +1,36 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { useLocation } from "react-router-dom";
+import Stack from "@mui/material/Stack";
 
 const AppHeader = () => {
+  const { pathname } = useLocation();
+  const title = pathname === "/" ? "Product List Page" : "Product Page";
+
   return (
-    /*<section id="start">
-      <div className="p-default header-wrapper flex">
-        <h2>Product list page</h2>
-      </div>
-    </section>*/
-    <Box
+    <Stack
+      direction="row"
+      justifyContent="end"
+      alignItems="center"
       sx={{
         px: "2rem",
         height: "6rem",
         backgroundColor: "primary.main",
-        display: "flex",
         borderBottom: "1px solid black",
-        alignItems: 'center',
-        textTransform: 'uppercase'
       }}
     >
       <Typography
         variant="h2"
         component="h2"
         sx={{
-          ml: "auto",
+          textTransform: "uppercase",
         }}
         color="secondary.main"
       >
-        Product List Page
+        {title}
       </Typography>
-    </Box>
+    </Stack>
   );
 };
 

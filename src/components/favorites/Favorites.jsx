@@ -3,39 +3,79 @@ import Box from "@mui/material/Box";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import ProductCard from "../productCard/ProductCard";
+import { useStoreState } from "../../state";
+import Typography from "@mui/material/Typography";
+import { Stack } from "@mui/material";
 
 const Favorites = () => {
-  const Row = ({ index, style }) => <div style={style}>Row {index + 1}</div>;
+  const favorites = useStoreState("favorites");
+
+  const getProduct = ({ index, key, style }) => (
+    <ProductCard
+      key={key}
+      dashed={false}
+      direction="row"
+      style={style}
+      contentSize="small"
+      id={favorites[index].id}
+      title={favorites[index].name}
+      image={favorites[index].src}
+      price={favorites[index].price}
+    />
+  );
 
   return (
     <Box
+      component="div"
+      className="Fullsize"
       sx={{
-        width: "100%",
-        height: "100%",
-        p: 4,
         boxSizing: "border-box",
+        py: 4,
+        px: 8,
       }}
     >
-      <Box
+      <Stack
+        direction="column"
         sx={{
-          width: "100%",
-          height: "100%",
-          boxSizing: "border-box",
-          borderWidth: "2px",
-          borderStyle: "dashed",
-          borderColor: "secondary.main",
           borderRadius: "30px",
-          p: 2,
+          boxSizing: "border-box",
+          py: 4,
         }}
+        className="DashedThick Fullsize"
       >
-        <AutoSizer>
-          {({ height, width }) => (
-            <List height={height} itemSize={35} itemCount={10} width={width}>
-              {Row}
-            </List>
-          )}
-        </AutoSizer>
-      </Box>
+        <Typography
+          component="h3"
+          variant="h3"
+          sx={{
+            textTransform: "uppercase",
+            ml: 4,
+          }}
+        >
+          Favorites
+        </Typography>
+        <Stack
+          style={{
+            marginRight: 8,
+          }}
+          sx={{
+            flexGrow: 1,
+            height: "100%",
+          }}
+        >
+          <AutoSizer>
+            {({ width, height }) => (
+              <List
+                height={height}
+                itemCount={favorites.length}
+                itemSize={130}
+                width={width}
+              >
+                {getProduct}
+              </List>
+            )}
+          </AutoSizer>
+        </Stack>
+      </Stack>
     </Box>
   );
 };
