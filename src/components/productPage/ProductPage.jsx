@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import ProductCardContent from "../productCard/ProductCardContent";
-import { useLocation } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import useProducts from "../../hooks/useProducts";
 import Stack from "@mui/material/Stack";
 import ReactImageMagnify from "react-image-magnify";
@@ -12,8 +12,8 @@ import Error from "../utils/Error";
 import Loading from "../utils/Loading";
 
 const ProductPage = () => {
-  const location = useLocation();
-  const { id } = location.state;
+  const { id } = useOutletContext();
+  console.log("Product page" + id);
   const { data, error, loading } = useProducts(id);
   const api_string = process.env.REACT_APP_BASE_API_STRING;
   return (
