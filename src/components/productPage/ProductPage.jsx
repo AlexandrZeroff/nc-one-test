@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import ProductCardContent from "../productCard/ProductCardContent";
@@ -14,6 +14,7 @@ import Loading from "../utils/Loading";
 const ProductPage = () => {
   const location = useLocation();
   const { id } = location.state;
+  console.log(id)
   const { data, error, loading } = useProducts(id);
   const api_string = process.env.REACT_APP_BASE_API_STRING;
   return (

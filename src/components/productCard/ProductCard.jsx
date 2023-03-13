@@ -16,6 +16,7 @@ const ProductCard = ({
   const api_string = process.env.REACT_APP_BASE_API_STRING;
   const image_url = api_string + image;
 
+
   const flexDirection = direction === "row" ? "row" : "column";
 
   return (

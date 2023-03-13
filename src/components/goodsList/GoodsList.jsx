@@ -12,11 +12,11 @@ const GoodsList = () => {
     <Grid
       container
       sx={{
-        height: '100%',
+        height: "100%",
         overflowY: "scroll",
         maxHeight: "calc(100vh - 6rem - 1px)",
         paddingTop: 4,
-        marginRight: 4,
+        paddingRight: 4,
         boxSizing: "border-box",
       }}
     >
