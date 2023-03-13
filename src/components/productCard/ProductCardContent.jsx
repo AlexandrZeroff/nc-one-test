@@ -11,6 +11,8 @@ import {
 import { Stack } from "@mui/material";
 
 const ProductCardContent = ({ id, image, title, price, size, direction }) => {
+  const favorites = useStoreState("favorites");
+
   const handleAddProduct = (e) => {
     addToFavorites(e, {
       id: id,
@@ -25,8 +27,6 @@ const ProductCardContent = ({ id, image, title, price, size, direction }) => {
     removeFromFavorites(e, id);
     setFavorite(!favorite);
   };
-
-  const favorites = useStoreState("favorites");
 
   const isFavorite = favorites.some((product) => {
     if (product.id === id) {

@@ -2,7 +2,6 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import ProductCardContent from "../productCard/ProductCardContent";
-import { useOutletContext } from "react-router-dom";
 import useProducts from "../../hooks/useProducts";
 import Stack from "@mui/material/Stack";
 import ReactImageMagnify from "react-image-magnify";
@@ -10,12 +9,14 @@ import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import { IconButton } from "@mui/material";
 import Error from "../utils/Error";
 import Loading from "../utils/Loading";
+import { useLocation } from "react-router-dom";
+
 
 const ProductPage = () => {
   const location = useLocation();
   const { id } = location.state;
-  console.log(id)
   const { data, error, loading } = useProducts(id);
+
   const api_string = process.env.REACT_APP_BASE_API_STRING;
   return (
     <Box

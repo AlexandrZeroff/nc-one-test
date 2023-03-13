@@ -8,13 +8,14 @@ import Typography from "@mui/material/Typography";
 import { Stack } from "@mui/material";
 
 const Favorites = () => {
-  const favorites = useStoreState('favorites')
+  const favorites = useStoreState("favorites");
 
-  const getProduct = ({ index }) => (
+  const getProduct = ({ index, key, style }) => (
     <ProductCard
-      key={index}
+      key={key}
       dashed={false}
       direction="row"
+      style={style}
       contentSize="small"
       id={favorites[index].id}
       title={favorites[index].name}
@@ -53,6 +54,9 @@ const Favorites = () => {
           Favorites
         </Typography>
         <Stack
+          style={{
+            marginRight: 8,
+          }}
           sx={{
             flexGrow: 1,
             height: "100%",
@@ -63,7 +67,7 @@ const Favorites = () => {
               <List
                 height={height}
                 itemCount={favorites.length}
-                itemSize={50}
+                itemSize={130}
                 width={width}
               >
                 {getProduct}

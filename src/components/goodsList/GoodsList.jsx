@@ -4,8 +4,10 @@ import Grid from "@mui/material/Grid";
 import ProductCard from "../productCard/ProductCard";
 import Error from "../utils/Error";
 import Loading from "../utils/Loading";
+import { useStoreState } from "../../state";
 
 const GoodsList = () => {
+  const favorites = useStoreState("favorites");
   const { data, error, loading } = useProducts();
 
   return (
@@ -34,6 +36,7 @@ const GoodsList = () => {
             key={index}
           >
             <ProductCard
+              key={index}
               dashed={true}
               direction="column"
               contentSize="small"

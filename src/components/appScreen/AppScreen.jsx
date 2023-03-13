@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Favorites from "../favorites/Favorites";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Outlet } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
 const AppScreen = () => {
-  const location = useLocation();
-  const [id, setID] = useState(location.pathname.substring(1))
-  console.log(location.pathname)
-
   return (
     <Box
       sx={{
@@ -25,7 +20,7 @@ const AppScreen = () => {
           <Favorites />
         </Grid>
         <Grid item xs={8}>
-          <Outlet context={{ id: id }} />
+          <Outlet />
         </Grid>
       </Grid>
     </Box>

@@ -11,16 +11,20 @@ const ProductCard = ({
   price,
   dashed,
   direction,
+  style,
   contentSize,
 }) => {
   const api_string = process.env.REACT_APP_BASE_API_STRING;
   const image_url = api_string + image;
 
-
   const flexDirection = direction === "row" ? "row" : "column";
 
   return (
-    <Link to={"/" + id} state={{ id: id }} style={{ textDecoration: "none" }}>
+    <Link
+      to={"/" + id}
+      state={{ id: id }}
+      style={{ ...style, textDecoration: "none" }}
+    >
       <Stack
         className={dashed ? "DashedThin" : ""}
         direction={flexDirection}
