@@ -26,7 +26,7 @@ const useProducts = (id) => {
                 }
             }
         )()
-    }, [req_string])
+    }, [id])
 
     return { data, error, loading }
 }

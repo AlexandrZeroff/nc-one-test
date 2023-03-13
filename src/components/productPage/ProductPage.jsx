@@ -12,8 +12,9 @@ import Error from "../utils/Error";
 import Loading from "../utils/Loading";
 
 const ProductPage = () => {
-  const { id } = useOutletContext();
-  console.log("Product page" + id);
+  const location = useLocation();
+  const { id } = location.state;
+  console.log(id)
   const { data, error, loading } = useProducts(id);
   const api_string = process.env.REACT_APP_BASE_API_STRING;
   return (

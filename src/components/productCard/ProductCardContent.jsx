@@ -35,6 +35,8 @@ const ProductCardContent = ({ id, image, title, price, size, direction }) => {
     return false;
   });
 
+  const [favorite, setFavorite] = useState(isFavorite);
+
   const componentStyles =
     size === "small"
       ? {
@@ -62,8 +64,6 @@ const ProductCardContent = ({ id, image, title, price, size, direction }) => {
           ...componentStyles,
           cardMarginTop: "auto",
         };
-
-  const [favorite, setFavorite] = useState(isFavorite);
 
   return (
     <CardContent
