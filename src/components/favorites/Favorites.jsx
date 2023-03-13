@@ -10,9 +10,8 @@ import { Stack } from "@mui/material";
 const Favorites = () => {
   const favorites = useStoreState("favorites");
 
-  const getProduct = ({ index, key, style }) => (
+  const getProduct = ({ index, style }) => (
     <ProductCard
-      key={key}
       dashed={false}
       direction="row"
       style={style}
@@ -40,6 +39,7 @@ const Favorites = () => {
           borderRadius: "30px",
           boxSizing: "border-box",
           py: 4,
+          px: 1
         }}
         className="DashedThick Fullsize"
       >
