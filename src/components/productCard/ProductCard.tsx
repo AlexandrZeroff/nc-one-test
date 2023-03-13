@@ -1,8 +1,8 @@
-import React from "react";
 import CardMedia from "@mui/material/CardMedia";
 import { Link } from "react-router-dom";
 import ProductCardContent from "./ProductCardContent";
 import { Stack } from "@mui/material";
+import { ProductCardProps } from "../../types/types";
 
 const ProductCard = ({
   id,
@@ -13,7 +13,7 @@ const ProductCard = ({
   direction,
   style,
   contentSize,
-}) => {
+}: ProductCardProps) => {
   const api_string = process.env.REACT_APP_BASE_API_STRING;
   const image_url = api_string + image;
 

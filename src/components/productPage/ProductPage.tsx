@@ -49,12 +49,12 @@ const ProductPage = () => {
               <ReactImageMagnify
                 {...{
                   smallImage: {
-                    alt: data.name,
+                    alt: data[0].name,
                     isFluidWidth: true,
-                    src: api_string + data.src,
+                    src: api_string + data[0].src,
                   },
                   largeImage: {
-                    src: api_string + data.src,
+                    src: api_string + data[0].src,
                     width: 600,
                     height: 600,
                   },
@@ -97,11 +97,11 @@ const ProductPage = () => {
               }}
             >
               <ProductCardContent
-                size="big"
-                id={data.id}
-                image={data.src}
-                title={data.name}
-                price={data.price}
+                size="large"
+                id={data[0].id}
+                image={data[0].src}
+                title={data[0].name}
+                price={data[0].price}
                 direction="row"
               />
             </Stack>

@@ -39,12 +39,12 @@ export const theme = createTheme({
             fontSize: 16,
             lineHeight: '24px',
         },
-        p: {
+        body1: {
             fontFamily: 'Poppins',
             fontWeight: 400,
             fontSize: 14,
             lineHeight: '20px',
-        }
+        },
     },
     components: {
         MuiTypography: {
