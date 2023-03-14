@@ -1,4 +1,3 @@
-import React from "react";
 import Favorites from "../favorites/Favorites";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";

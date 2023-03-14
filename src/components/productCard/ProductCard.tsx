@@ -1,21 +1,21 @@
-import React from "react";
 import CardMedia from "@mui/material/CardMedia";
 import { Link } from "react-router-dom";
 import ProductCardContent from "./ProductCardContent";
 import { Stack } from "@mui/material";
+import { ProductCardProps } from "../../types/types";
 
 const ProductCard = ({
   id,
-  image,
-  title,
+  src,
+  name,
   price,
   dashed,
   direction,
   style,
   contentSize,
-}) => {
+}: ProductCardProps) => {
   const api_string = process.env.REACT_APP_BASE_API_STRING;
-  const image_url = api_string + image;
+  const image_url = api_string + src;
 
   const flexDirection = direction === "row" ? "row" : "column";
 
@@ -46,7 +46,7 @@ const ProductCard = ({
       >
         <CardMedia
           component="img"
-          alt={title}
+          alt={name}
           image={image_url}
           sx={{
             width: direction === "row" ? "40%" : "auto",
@@ -55,8 +55,8 @@ const ProductCard = ({
         />
         <ProductCardContent
           id={id}
-          image={image}
-          title={title}
+          src={src}
+          name={name}
           price={price}
           size={contentSize}
           direction={direction}

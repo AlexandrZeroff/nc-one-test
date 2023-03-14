@@ -9,22 +9,34 @@ import {
   removeFromFavorites,
 } from "../../state";
 import { Stack } from "@mui/material";
+import { ProductCardContentProps, BtnSize } from "../../types/types";
 
-const ProductCardContent = ({ id, image, title, price, size, direction }) => {
+const ProductCardContent = ({
+  id,
+  src,
+  name,
+  price,
+  size,
+  direction,
+}: ProductCardContentProps) => {
   const favorites = useStoreState("favorites");
 
-  const handleAddProduct = (e) => {
-    addToFavorites(e, {
+  const handleAddProduct = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    addToFavorites(event, {
       id: id,
-      name: title,
-      src: image,
+      name: name,
+      src: src,
       price: price,
     });
     setFavorite(!favorite);
   };
 
-  const handleRemoveProduct = (e) => {
-    removeFromFavorites(e, id);
+  const handleRemoveProduct = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    removeFromFavorites(event, id);
     setFavorite(!favorite);
   };
 
@@ -73,11 +85,11 @@ const ProductCardContent = ({ id, image, title, price, size, direction }) => {
       }}
     >
       <Typography
-        variant={styles.titleVariant}
-        component={styles.titleVariant}
+        variant={styles.titleVariant as "h1" | "h4"}
+        component={styles.titleVariant as "h1" | "h4"}
         color="secondary.main"
       >
-        {title}
+        {name}
       </Typography>
       <Stack
         direction="row"
@@ -90,8 +102,8 @@ const ProductCardContent = ({ id, image, title, price, size, direction }) => {
         }}
       >
         <Typography
-          variant={styles.priceVariant}
-          component={styles.priceVariant}
+          variant={styles.priceVariant as "h1" | "h3"}
+          component={styles.priceVariant as "h1" | "h3"}
           color="secondary.main"
           sx={{
             fontWeight: styles.priceWeight,
@@ -101,8 +113,12 @@ const ProductCardContent = ({ id, image, title, price, size, direction }) => {
         </Typography>
         <IconButton
           aria-label="Add to favorites"
-          onClick={isFavorite ? handleRemoveProduct : handleAddProduct}
-          size={styles.btnSize}
+          onClick={
+            isFavorite
+              ? (e) => handleRemoveProduct(e)
+              : (e) => handleAddProduct(e)
+          }
+          size={styles.btnSize as BtnSize}
           sx={{
             borderRadius: 1,
             color: favorite ? "secondary.main" : "white",

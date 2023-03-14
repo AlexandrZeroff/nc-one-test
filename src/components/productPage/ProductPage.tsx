@@ -1,8 +1,7 @@
-import React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import ProductCardContent from "../productCard/ProductCardContent";
-import useProducts from "../../hooks/useProducts";
+import useProduct from "../../hooks/useProduct";
 import Stack from "@mui/material/Stack";
 import ReactImageMagnify from "react-image-magnify";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
@@ -14,7 +13,7 @@ import { useLocation } from "react-router-dom";
 const ProductPage = () => {
   const location = useLocation();
   const { id } = location.state;
-  const { data, error, loading } = useProducts(id);
+  const { data, error, loading } = useProduct(id);
 
   const api_string = process.env.REACT_APP_BASE_API_STRING;
   return (
@@ -97,10 +96,10 @@ const ProductPage = () => {
               }}
             >
               <ProductCardContent
-                size="big"
+                size="large"
                 id={data.id}
-                image={data.src}
-                title={data.name}
+                src={data.src}
+                name={data.name}
                 price={data.price}
                 direction="row"
               />

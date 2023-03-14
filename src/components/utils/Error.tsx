@@ -1,9 +1,14 @@
-import React from "react";
 import { Stack } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
+import { APIError } from "../../types/types";
+import { AxiosError } from "axios";
 
-const Error = ({ error }) => {
+type ErrorProp = {
+  error: AxiosError | APIError;
+};
+
+const Error = ({ error }: ErrorProp) => {
   return (
     <Stack
       direction="column"
@@ -14,8 +19,8 @@ const Error = ({ error }) => {
       <Typography variant="h2" component="h2" color={red[600]}>
         Oops, something went wrong...
       </Typography>
-      <Typography variant="p" component="p" color={red[600]}>
-        {error}
+      <Typography variant="body1" component="p" color={red[600]}>
+        {error.message}
       </Typography>
     </Stack>
   );
