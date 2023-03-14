@@ -13,8 +13,8 @@ import { ProductCardContentProps, BtnSize } from "../../types/types";
 
 const ProductCardContent = ({
   id,
-  image,
-  title,
+  src,
+  name,
   price,
   size,
   direction,
@@ -26,8 +26,8 @@ const ProductCardContent = ({
   ) => {
     addToFavorites(event, {
       id: id,
-      name: title,
-      src: image,
+      name: name,
+      src: src,
       price: price,
     });
     setFavorite(!favorite);
@@ -89,7 +89,7 @@ const ProductCardContent = ({
         component={styles.titleVariant as "h1" | "h4"}
         color="secondary.main"
       >
-        {title}
+        {name}
       </Typography>
       <Stack
         direction="row"

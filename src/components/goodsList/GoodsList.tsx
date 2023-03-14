@@ -1,4 +1,3 @@
-import React from "react";
 import useProducts from "../../hooks/useProducts";
 import Grid from "@mui/material/Grid";
 import ProductCard from "../productCard/ProductCard";
@@ -39,8 +38,8 @@ const GoodsList = () => {
               direction="column"
               contentSize="small"
               id={product.id}
-              title={product.name}
-              image={product.src}
+              name={product.name}
+              src={product.src}
               price={product.price}
             />
           </Grid>

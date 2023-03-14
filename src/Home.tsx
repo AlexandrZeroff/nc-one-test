@@ -1,4 +1,3 @@
-import React from "react";
 import AppHeader from "./components/appHeader/AppHeader";
 import AppScreen from "./components/appScreen/AppScreen";
 

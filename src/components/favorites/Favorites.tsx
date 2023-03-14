@@ -10,15 +10,25 @@ import { Stack } from "@mui/material";
 const Favorites = () => {
   const favorites = useStoreState("favorites");
 
-  const getProduct = ({ index, style }) => (
+  interface RowGeneratorProps {
+    index: number;
+    style: React.CSSProperties;
+  }
+
+  interface Size {
+    height: number;
+    width: number;
+  }
+
+  const getProduct = ({ index, style }: RowGeneratorProps) => (
     <ProductCard
       dashed={false}
       direction="row"
       style={style}
       contentSize="small"
       id={favorites[index].id}
-      title={favorites[index].name}
-      image={favorites[index].src}
+      name={favorites[index].name}
+      src={favorites[index].src}
       price={favorites[index].price}
     />
   );
@@ -39,7 +49,7 @@ const Favorites = () => {
           borderRadius: "30px",
           boxSizing: "border-box",
           py: 4,
-          px: 1
+          px: 1,
         }}
         className="DashedThick Fullsize"
       >
@@ -63,7 +73,7 @@ const Favorites = () => {
           }}
         >
           <AutoSizer>
-            {({ width, height }) => (
+            {({ width, height }: Size) => (
               <List
                 height={height}
                 itemCount={favorites.length}
