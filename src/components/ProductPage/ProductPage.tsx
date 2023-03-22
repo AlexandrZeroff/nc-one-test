@@ -1,49 +1,36 @@
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import ProductCardContent from "../productCard/ProductCardContent";
-import useProduct from "../../hooks/useProduct";
+import ProductCardContent from "../ProductCard/ProductCardContent";
+import useProducts from "../../hooks/useProduct";
 import Stack from "@mui/material/Stack";
 import ReactImageMagnify from "react-image-magnify";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
-import { IconButton } from "@mui/material";
-import Error from "../utils/Error";
-import Loading from "../utils/Loading";
+import Error from "../../shared/Error";
+import Loading from "../../shared/Loading";
 import { useLocation } from "react-router-dom";
+import {
+  ProductPageStack,
+  ZoomIconButton,
+  ProductPageContentStack,
+} from "../../app/themeComponents";
 
 const ProductPage = () => {
   const location = useLocation();
   const { id } = location.state;
-  const { data, error, loading } = useProduct(id);
+  const { data, error, loading } = useProducts(id);
 
   const api_string = process.env.REACT_APP_BASE_API_STRING;
   return (
-    <Box
-      sx={{
-        flexGrow: 1,
-        height: "100%",
-        maxHeight: "calc(100vh - 8rem)",
-        mx: 4,
-        boxSizing: "border-box",
-      }}
-    >
+    <ProductPageStack>
       {loading && <Loading />}
       {error && <Error error={error} />}
       {data && (
-        <Grid
-          container
-          columnSpacing={8}
-          sx={{
-            height: "100%",
-          }}
-        >
+        <Grid container columnSpacing={8} className="FullHeight">
           <Grid item xs={5}>
             <Stack
               direction="column"
               justifyContent="center"
               alignItems="center"
-              sx={{
-                height: "100%",
-              }}
+              className="FullHeight"
             >
               <ReactImageMagnify
                 {...{
@@ -71,29 +58,19 @@ const ProductPage = () => {
                   isHintEnabled: true,
                   shouldHideHintAfterFirstActivation: false,
                   hintComponent: () => (
-                    <IconButton
-                      size="large"
-                      sx={{
-                        marginTop: 4,
-                        color: "secondary.main",
-                        mx: "auto",
-                      }}
-                    >
+                    <ZoomIconButton size="large">
                       <ZoomInIcon fontSize="inherit" />
-                    </IconButton>
+                    </ZoomIconButton>
                   ),
                 }}
               />
             </Stack>
           </Grid>
           <Grid item xs={7}>
-            <Stack
+            <ProductPageContentStack
               direction="row"
               alignItems="center"
-              sx={{
-                height: "100%",
-                mr: 4,
-              }}
+              className="FullHeight"
             >
               <ProductCardContent
                 size="large"
@@ -103,11 +80,11 @@ const ProductPage = () => {
                 price={data.price}
                 direction="row"
               />
-            </Stack>
+            </ProductPageContentStack>
           </Grid>
         </Grid>
       )}
-    </Box>
+    </ProductPageStack>
   );
 };
 

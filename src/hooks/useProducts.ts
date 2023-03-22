@@ -4,8 +4,7 @@ import { Product } from "../types/types";
 import { APIError } from "../types/types";
 
 const useProducts = () => {
-  const api_string = process.env.REACT_APP_BASE_API_STRING;
-  const req_string = api_string + "/image";
+  const req_string = process.env.REACT_APP_REQUEST_API_STRING as string;
   
 
   const [data, setData] = useState<Product[]>([]);
