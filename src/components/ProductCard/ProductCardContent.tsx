@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import CardContent from "@mui/material/CardContent";
-import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Typography from "@mui/material/Typography";
 import {
@@ -8,8 +6,12 @@ import {
   addToFavorites,
   removeFromFavorites,
 } from "../../state";
-import { Stack } from "@mui/material";
 import { ProductCardContentProps, BtnSize } from "../../types/types";
+import {
+  ProductCardContentContainer,
+  ProductCardContentStack,
+  StyledIconButton,
+} from "../../app/themeComponents";
 
 const ProductCardContent = ({
   id,
@@ -55,14 +57,14 @@ const ProductCardContent = ({
           titleVariant: "h4",
           priceVariant: "h3",
           priceWeight: 600,
-          actionMarginTop: 1,
+          actionMarginTop: ".5rem",
           btnSize: "small",
         }
       : {
           titleVariant: "h1",
           priceVariant: "h1",
           priceWeight: 600,
-          actionMarginTop: 4,
+          actionMarginTop: "2rem",
           btnSize: "large",
         };
 
@@ -78,9 +80,8 @@ const ProductCardContent = ({
         };
 
   return (
-    <CardContent
+    <ProductCardContentContainer
       sx={{
-        width: "100%",
         mt: styles.cardMarginTop,
       }}
     >
@@ -91,15 +92,11 @@ const ProductCardContent = ({
       >
         {name}
       </Typography>
-      <Stack
+      <ProductCardContentStack
         direction="row"
         alignItems="center"
         justifyContent="space-between"
-        sx={{
-          width: "100%",
-          m: 0,
-          marginTop: styles.actionMarginTop,
-        }}
+        actionMarginTop={styles.actionMarginTop}
       >
         <Typography
           variant={styles.priceVariant as "h1" | "h3"}
@@ -111,7 +108,7 @@ const ProductCardContent = ({
         >
           $ {price}
         </Typography>
-        <IconButton
+        <StyledIconButton
           aria-label="Add to favorites"
           onClick={
             isFavorite
@@ -120,15 +117,13 @@ const ProductCardContent = ({
           }
           size={styles.btnSize as BtnSize}
           sx={{
-            borderRadius: 1,
             color: favorite ? "secondary.main" : "white",
-            backgroundColor: "primary.main",
           }}
         >
           <FavoriteIcon fontSize="inherit" />
-        </IconButton>
-      </Stack>
-    </CardContent>
+        </StyledIconButton>
+      </ProductCardContentStack>
+    </ProductCardContentContainer>
   );
 };
 

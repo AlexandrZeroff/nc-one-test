@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import { APIError } from "../../types/types";
+import { APIError } from "../types/types";
 import { AxiosError } from "axios";
 
 type ErrorProp = {

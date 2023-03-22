@@ -22,3 +22,8 @@ export type BtnSize = "small" | "large" | "medium" | undefined;
 export type APIError = {
   message: string;
 };
+
+export interface Size {
+  height: number;
+  width: number;
+}
